@@ -30,4 +30,25 @@
   const next = document.querySelector('[data-lesson-next]');
   previous.href = lessonNumber > 1 ? `leccion-per.html?modulo=${moduleNumber}&leccion=${lessonNumber-1}` : moduleUrl;
   next.href = lessonNumber < 4 ? `leccion-per.html?modulo=${moduleNumber}&leccion=${lessonNumber+1}` : (moduleNumber < 10 ? `modulo-per.html?modulo=${moduleNumber+1}` : 'aula-per.html');
+
+  if (moduleNumber === 10 && lessonNumber === 1) {
+    const editorSection = document.querySelector('[data-lesson-editor]');
+    editorSection.insertAdjacentHTML('beforebegin', `<section class="section bg-soft" data-demoras-lesson><div class="container"><div class="section-heading center"><span class="eyebrow">Ejercicios de carta</span><h2>Posición por demoras</h2><p class="lead">Observa el proceso completo para elegir referencias visibles, trazar las demoras verdaderas y obtener la situación del buque.</p></div><div class="chart-exercise-grid"><article class="card chart-exercise"><img data-demora-gif="demoras_01_entrada_occidental" alt="Ejercicio animado de posición por demoras en la entrada occidental" width="480" height="270"><div><span class="module-num">01</span><h3>Entrada occidental</h3><p class="muted">Demoras a Punta Paloma y Punta Malabata.</p></div></article><article class="card chart-exercise"><img data-demora-gif="demoras_02_centro_estrecho" alt="Ejercicio animado de posición por demoras en el centro del Estrecho" width="480" height="270"><div><span class="module-num">02</span><h3>Centro del Estrecho</h3><p class="muted">Situación utilizando Isla de Tarifa y Punta Almina.</p></div></article><article class="card chart-exercise"><img data-demora-gif="demoras_03_acceso_oriental" alt="Ejercicio animado de posición por demoras en el acceso oriental" width="480" height="270"><div><span class="module-num">03</span><h3>Acceso oriental</h3><p class="muted">Trazado mediante referencias del sector oriental.</p></div></article></div><p class="notice" style="margin-top:24px">Material exclusivamente didáctico. No utilizar para la navegación real.</p></div></section>`);
+    const exerciseSection = document.querySelector('[data-demoras-lesson]');
+    const sources = ['demoras_01_entrada_occidental.js','demoras_02_centro_estrecho.js','demoras_03_acceso_oriental.js'];
+    const loadScript = source => new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = source;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    Promise.all(sources.map(loadScript)).then(() => {
+      exerciseSection.querySelectorAll('[data-demora-gif]').forEach(image => {
+        image.src = (window.DEMORA_GIFS || {})[image.dataset.demoraGif] || '';
+      });
+    }).catch(() => {
+      exerciseSection.querySelector('.lead').textContent = 'Los ejercicios animados no se han podido cargar. Actualiza la página para volver a intentarlo.';
+    });
+  }
 })();
