@@ -5,6 +5,8 @@
   const contactList = document.querySelector('[data-contact-list]');
   const contactStatus = document.querySelector('[data-contact-status]');
   const contactFilter = document.querySelector('[data-contact-filter]');
+  const passwordForm = document.querySelector('[data-password-form]');
+  const passwordStatus = document.querySelector('[data-password-status]');
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
@@ -45,4 +47,30 @@
   document.querySelector('[data-refresh-users]').addEventListener('click', loadUsers);
   document.querySelector('[data-refresh-contacts]').addEventListener('click', loadContacts);
   contactFilter.addEventListener('change', loadContacts);
+  passwordForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const values = new FormData(passwordForm);
+    const password = String(values.get('password') || '');
+    const confirmation = String(values.get('confirm_password') || '');
+    passwordStatus.style.display = 'block';
+    if (password !== confirmation) {
+      passwordStatus.textContent = 'Las contraseñas no coinciden.';
+      return;
+    }
+    if (password.length < 10) {
+      passwordStatus.textContent = 'Utiliza al menos 10 caracteres.';
+      return;
+    }
+    const button = passwordForm.querySelector('button[type="submit"]');
+    button.disabled = true;
+    passwordStatus.textContent = 'Actualizando contraseña…';
+    const { error } = await client.auth.updateUser({ password });
+    button.disabled = false;
+    if (error) {
+      passwordStatus.textContent = 'No se pudo cambiar la contraseña. Inténtalo de nuevo.';
+      return;
+    }
+    passwordForm.reset();
+    passwordStatus.textContent = 'Contraseña actualizada correctamente.';
+  });
 })();
