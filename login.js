@@ -2,6 +2,7 @@
   const client = window.nauticaSupabase;
   const status = document.querySelector('[data-auth-status]');
   const loginForm = document.querySelector('[data-login-form]');
+  const masterEmail = 'josep.ribetgomez@gmail.com';
   const params = new URLSearchParams(location.search);
   const safeNext = params.get('next') && !params.get('next').includes('://') ? params.get('next') : 'baterias-test.html';
 
@@ -18,8 +19,9 @@
     const { data, error } = await client.auth.signInWithPassword({ email: values.get('email'), password: values.get('password') });
     if (error) return message('Correo o contraseña incorrectos.', true);
     const { data: profile, error: profileError } = await client.from('profiles').select('active,role').eq('id', data.user.id).single();
-    if (profileError || !profile?.active) { await client.auth.signOut(); return message('Tu cuenta todavía no ha sido activada por el coordinador.', true); }
-    location.replace(profile.role === 'admin' && safeNext === 'baterias-test.html' ? 'admin.html' : safeNext);
+    const isCoordinator = profile?.role === 'admin' || String(data.user.email || '').toLowerCase() === masterEmail;
+    if (profileError || (!profile?.active && !isCoordinator)) { await client.auth.signOut(); return message('Tu cuenta todavía no ha sido activada por el coordinador.', true); }
+    location.replace(isCoordinator && safeNext === 'baterias-test.html' ? 'admin.html' : safeNext);
   });
 
 })();
