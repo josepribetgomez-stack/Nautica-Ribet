@@ -60,6 +60,7 @@ p { margin: 0; }
 .lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--muted); max-width: 740px; }
 .section-heading { display: grid; gap: 18px; margin-bottom: 44px; }
 .center { text-align: center; justify-items: center; }
+.home-page .section-heading { text-align: center; justify-items: center; }
 .muted { color: var(--muted); }
 .small { font-size: .9rem; }
 
@@ -173,7 +174,7 @@ p { margin: 0; }
 .trust-item { padding: 23px; display: flex; gap: 13px; align-items: center; }
 .trust-item + .trust-item { border-left: 1px solid var(--line); }
 .trust-item strong { display: block; color: var(--navy); }
-.trust-item small { color: var(--muted); }
+.trust-item small { display: block; color: var(--muted); margin-top: 6px; }
 .icon-box { width: 42px; height: 42px; flex: 0 0 42px; border-radius: 12px; background: var(--sky); color: var(--blue); display: grid; place-items: center; font-weight: 950; }
 
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
@@ -201,7 +202,8 @@ p { margin: 0; }
   background: white;
 }
 .module-num { width: 42px; height: 42px; border-radius: 13px; background: var(--sky); color: var(--blue); display: grid; place-items: center; font-weight: 900; }
-.module small { color: var(--muted); }
+.module strong { display: block; }
+.module small { display: block; color: var(--muted); margin-top: 6px; }
 .module-time { font-weight: 800; font-size: .82rem; color: var(--muted); }
 
 .pricing-card { position: sticky; top: 108px; padding: 32px; border-radius: 28px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow); }
