@@ -236,6 +236,13 @@ p { margin: 0; }
 .price-box .price { font-size: 2.8rem; font-weight: 950; color: var(--navy); }
 .price-box .price small { font-size: .9rem; color: var(--muted); font-weight: 650; }
 
+.chart-exercise-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.chart-exercise { padding: 0; overflow: hidden; }
+.chart-exercise img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; background: #dce8eb; }
+.chart-exercise > div { padding: 22px; display: grid; grid-template-columns: 42px 1fr; gap: 8px 14px; align-items: center; }
+.chart-exercise h3 { grid-column: 2; }
+.chart-exercise p { grid-column: 1/-1; margin-top: 4px; }
+
 .faq { display: grid; gap: 12px; max-width: 850px; margin-inline: auto; }
 .faq-item { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: white; }
 .faq-question { width: 100%; border: 0; background: white; text-align: left; padding: 20px 22px; display: flex; justify-content: space-between; gap: 20px; color: var(--navy); font-weight: 850; }
@@ -346,6 +353,7 @@ textarea { min-height: 145px; resize: vertical; }
   .section { padding: 70px 0; }
   .grid-3, .grid-2, .price-grid { grid-template-columns: 1fr; }
   .price-box.featured { transform: none; }
+  .chart-exercise-grid { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: 1fr; }
   .trust-item + .trust-item { border-left: 0; border-top: 1px solid var(--line); }
   .hero-visual { min-height: 420px; }
