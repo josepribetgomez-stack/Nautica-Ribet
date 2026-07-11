@@ -108,6 +108,8 @@ p { margin: 0; }
 .btn-primary:hover { box-shadow: 0 16px 30px rgba(8,167,165,.32); }
 .btn-secondary { color: var(--navy); background: white; border-color: var(--line); }
 .btn-secondary:hover { border-color: var(--turquoise); }
+.access-link { color: #3b2a00; background: #ffd447; border-color: #e6b900; box-shadow: 0 10px 22px rgba(230,185,0,.28); }
+.access-link:hover { background: #ffca18; border-color: #cda500; box-shadow: 0 14px 26px rgba(230,185,0,.36); }
 .btn-dark { background: var(--navy); color: white; }
 .btn-sm { min-height: 42px; padding-inline: 17px; font-size: .88rem; }
 .btn-block { width: 100%; }
