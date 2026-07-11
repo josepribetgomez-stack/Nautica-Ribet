@@ -1,6 +1,7 @@
 (function () {
   const client = window.nauticaSupabase;
   const loginPage = 'login.html';
+  const masterEmail = 'josep.ribetgomez@gmail.com';
 
   function destination() {
     return encodeURIComponent(location.pathname.split('/').pop() + location.search + location.hash);
@@ -20,14 +21,19 @@
     }
     try {
       const profile = await profileFor(session.user.id);
-      if (!profile.active) {
+      const isCoordinator = profile.role === 'admin' || String(session.user.email || profile.email).toLowerCase() === masterEmail;
+      if (!profile.active && !isCoordinator) {
         await client.auth.signOut();
         location.replace(`${loginPage}?estado=pendiente`);
         return null;
       }
-      if (options.admin && profile.role !== 'admin') {
+      if (options.admin && !isCoordinator) {
         location.replace('baterias-test.html');
         return null;
+      }
+      if (isCoordinator) {
+        profile.role = 'admin';
+        profile.active = true;
       }
       document.body.style.visibility = 'visible';
       document.dispatchEvent(new CustomEvent('nautica:authenticated', { detail: { session, profile } }));
@@ -44,7 +50,7 @@
     location.replace(loginPage);
   }
 
-  window.NauticaAuth = { client, profileFor, requireAccess, signOut };
+  window.NauticaAuth = { client, profileFor, requireAccess, signOut, masterEmail };
 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-sign-out]').forEach(button => button.addEventListener('click', signOut));
