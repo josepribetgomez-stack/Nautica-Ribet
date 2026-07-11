@@ -1,0 +1,18 @@
+ACADEMIA NÁUTICA JOSEP RIBET — CAMBIOS DE LA VERSIÓN FINAL
+
+- Comprobados los 8 archivos HTML y todos sus enlaces internos y anclas.
+- Validada la sintaxis del archivo JavaScript y el equilibrio estructural del CSS.
+- Probado el test completo de 20 preguntas hasta la pantalla de resultados.
+- Mejorado el menú móvil: etiqueta accesible dinámica y cierre con la tecla Escape.
+- Corregido el estado aria-expanded de todas las preguntas frecuentes.
+- Añadidos estilos visibles de foco para navegación con teclado.
+- Añadido un estado claro para botones desactivados.
+- Hecho más robusto el aviso de cookies cuando el almacenamiento local está bloqueado.
+- El resultado del test usa automáticamente el número real de preguntas.
+
+PENDIENTE ANTES DE PUBLICAR Y VENDER
+
+- Conectar los botones de matrícula a Stripe, WooCommerce o la plataforma elegida.
+- Conectar el formulario de contacto a un correo o CRM.
+- Completar los datos fiscales y someter los textos legales a revisión profesional.
+- Sustituir los elementos provisionales por fotografías y contenidos reales.
