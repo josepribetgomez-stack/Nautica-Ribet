@@ -19,7 +19,7 @@
   document.querySelector('[data-module-title]').textContent = item.title;
   document.querySelector('[data-module-description]').textContent = item.description;
   document.querySelector('[data-module-breadcrumb]').textContent = item.title;
-  document.querySelector('[data-module-lessons]').innerHTML = item.lessons.map((lesson,index)=>`<div class="module"><span class="module-num">${String(index+1).padStart(2,'0')}</span><div><strong>${lesson}</strong><small>Espacio preparado para vídeo, apuntes y actividades.</small></div><span class="module-time">Pendiente</span></div>`).join('');
+  document.querySelector('[data-module-lessons]').innerHTML = item.lessons.map((lesson,index)=>`<a class="module" href="leccion-per.html?modulo=${number}&leccion=${index+1}"><span class="module-num">${String(index+1).padStart(2,'0')}</span><div><strong>${lesson}</strong><small>Entrar en la lección, materiales y actividades.</small></div><span class="module-time">Abrir →</span></a>`).join('');
   const previous = document.querySelector('[data-module-prev]');
   const next = document.querySelector('[data-module-next]');
   previous.href = number > 1 ? `modulo-per.html?modulo=${number-1}` : 'aula-per.html';
