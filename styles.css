@@ -268,6 +268,19 @@ p { margin: 0; }
 .quiz-actions { display: flex; justify-content: space-between; gap: 12px; }
 .quiz-result { display: none; text-align: center; }
 .result-score { width: 150px; height: 150px; border-radius: 50%; margin: 22px auto; display: grid; place-items: center; background: var(--sky); color: var(--navy); font-size: 2.3rem; font-weight: 950; border: 8px solid white; box-shadow: 0 0 0 2px var(--turquoise); }
+.bank-layout { display: grid; grid-template-columns: 280px minmax(0,1fr); gap: 34px; align-items: start; }
+.bank-selector { display: grid; gap: 18px; position: sticky; top: 108px; }
+.bank-buttons { display: grid; gap: 10px; }
+.bank-button { width: 100%; text-align: left; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: white; color: var(--navy); }
+.bank-button strong, .bank-button small { display: block; }
+.bank-button small { color: var(--muted); margin-top: 3px; }
+.bank-button.active { border-color: var(--turquoise); background: var(--sky); box-shadow: 0 0 0 2px rgba(8,167,165,.12); }
+.bank-quiz { min-width: 0; }
+.review-list { display: grid; gap: 12px; margin-top: 30px; text-align: left; }
+.review-item { padding: 16px; border-radius: 14px; border: 1px solid var(--line); background: white; }
+.review-item.correct { border-left: 5px solid var(--success); }
+.review-item.incorrect { border-left: 5px solid #c7473b; }
+.review-item p { margin-top: 7px; color: var(--muted); }
 
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .form-group { display: grid; gap: 7px; }
@@ -317,6 +330,9 @@ textarea { min-height: 145px; resize: vertical; }
   .steps { grid-template-columns: repeat(2,1fr); }
   .footer-grid { grid-template-columns: repeat(2,1fr); }
   .pricing-card { position: static; }
+  .bank-layout { grid-template-columns: 1fr; }
+  .bank-selector { position: static; }
+  .bank-buttons { grid-template-columns: repeat(3,1fr); }
 }
 
 @media (max-width: 720px) {
@@ -343,6 +359,7 @@ textarea { min-height: 145px; resize: vertical; }
   .quiz-progress { width: 100%; flex: none; }
   .answer-option { padding: 14px 12px; }
   .quiz-actions .btn { min-width: 0; padding-inline: 17px; }
+  .bank-buttons { grid-template-columns: 1fr; }
   .module { grid-template-columns: 42px 1fr; }
   .module-time { grid-column: 2; }
   .nav-actions .btn-primary { display: none; }
