@@ -276,6 +276,8 @@ p { margin: 0; }
 .bank-button small { color: var(--muted); margin-top: 3px; }
 .bank-button.active { border-color: var(--turquoise); background: var(--sky); box-shadow: 0 0 0 2px rgba(8,167,165,.12); }
 .bank-quiz { min-width: 0; }
+.official-buttons { max-height: 520px; overflow-y: auto; padding-right: 4px; }
+.official-meta { display: inline-flex; margin-bottom: 15px; padding: 7px 11px; border-radius: 999px; background: var(--sky); color: var(--blue); font-size: .78rem; font-weight: 800; }
 .review-list { display: grid; gap: 12px; margin-top: 30px; text-align: left; }
 .review-item { padding: 16px; border-radius: 14px; border: 1px solid var(--line); background: white; }
 .review-item.correct { border-left: 5px solid var(--success); }
