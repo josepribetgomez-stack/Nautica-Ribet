@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Baterías de simulacros tipo examen para preparar el PER.">
+  <title>Baterías de test PER | Academia Náutica Josep Ribet</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap">
+  <a class="brand" href="index.html"><span class="brand-mark">⚓</span><span class="brand-text"><span>Academia Náutica</span><small>JOSEP RIBET</small></span></a>
+  <nav class="nav-menu"><a href="index.html">Inicio</a><a href="curso-per.html">Curso PER</a><a href="test.html">Test gratuito</a><a aria-current="page" href="baterias-test.html">Baterías de test</a><a href="contacto.html">Contacto</a></nav>
+  <div class="nav-actions"><a class="btn btn-primary btn-sm" href="curso-per.html">Ver curso</a><button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button></div>
+</div></header>
+
+<main>
+<section class="page-hero"><div class="container"><span class="eyebrow">Entrenamiento PER</span><h1 style="font-size:clamp(2.5rem,5vw,4.5rem)">Baterías de simulacros</h1><p class="lead" style="margin-top:20px">Practica con cuestionarios tipo examen, recibe tu puntuación y revisa cada respuesta antes de repetir la batería.</p></div></section>
+
+<section class="section"><div class="container bank-layout" data-test-banks>
+  <aside class="bank-selector">
+    <span class="eyebrow">Elige una batería</span>
+    <div class="bank-buttons" role="list">
+      <button class="bank-button active" data-bank="0"><strong>Batería 1</strong><small>Fundamentos y seguridad</small></button>
+      <button class="bank-button" data-bank="1"><strong>Batería 2</strong><small>RIPA y balizamiento</small></button>
+      <button class="bank-button" data-bank="2"><strong>Batería 3</strong><small>Navegación y meteorología</small></button>
+    </div>
+    <div class="notice">Material privado de preparación basado en el temario del PER. No reproduce ni sustituye un examen oficial.</div>
+  </aside>
+
+  <div class="quiz-card bank-quiz">
+    <div data-bank-question-view>
+      <div class="quiz-top"><span data-bank-counter>Pregunta 1 de 10</span><div class="quiz-progress"><span data-bank-progress></span></div></div>
+      <h2 data-bank-title style="font-size:clamp(1.4rem,3vw,2rem)"></h2>
+      <div class="answer-list" data-bank-options></div>
+      <div class="quiz-actions"><button class="btn btn-secondary" data-bank-prev>Anterior</button><button class="btn btn-primary" data-bank-next>Siguiente</button></div>
+    </div>
+    <div class="quiz-result" data-bank-result>
+      <span class="eyebrow">Resultado</span><h2>Simulacro completado</h2><div class="result-score" data-bank-score>0/10</div><p class="lead" data-bank-message style="margin-inline:auto"></p>
+      <div class="review-list" data-bank-review></div>
+      <div class="hero-actions" style="justify-content:center;margin-top:28px"><button class="btn btn-primary" data-bank-retry>Repetir batería</button><a class="btn btn-secondary" href="curso-per.html">Ver curso PER</a></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer class="site-footer"><div class="container"><div class="footer-bottom" style="margin-top:0;border-top:0"><span>© 2026 Academia Náutica Josep Ribet</span><span><a href="legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a></span></div></div></footer>
+<div class="toast" role="status" aria-live="polite"></div><script src="script.js?v=3"></script>
+</body></html>
