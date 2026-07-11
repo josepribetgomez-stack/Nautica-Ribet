@@ -323,7 +323,7 @@ textarea { min-height: 145px; resize: vertical; }
   .nav-menu.open { display: flex; }
   .menu-toggle { display: block; }
   .nav-actions .btn-secondary { display: none; }
-  .nav-actions .access-link { display: inline-flex; }
+  .nav-actions a[href="login.html"] { display: inline-flex; }
   .hero-grid, .course-layout, .teacher, .page-hero-grid { grid-template-columns: 1fr; }
   .hero { padding-top: 58px; }
   .hero-visual { min-height: 460px; }
