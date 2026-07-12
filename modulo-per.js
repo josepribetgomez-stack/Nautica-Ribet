@@ -1,7 +1,7 @@
 (function () {
   const modules = [
-    {title:'Nomenclatura náutica',description:'Conoce la estructura, las partes y los elementos fundamentales de una embarcación.',lessons:['Dimensiones principales','Partes del casco','Estructura de la embarcación','Equipo y terminología']},
-    {title:'Amarre y fondeo',description:'Aprende a utilizar cabos, nudos, amarras y equipos de fondeo con seguridad.',lessons:['Cabos y operaciones','Nudos fundamentales','Elementos de amarre','Equipo y maniobra de fondeo']},
+    {title:'Nomenclatura náutica',description:'Conoce la estructura, las partes y los elementos fundamentales de una embarcación.',lessons:['Dimensiones principales','Partes del casco','Estructura de la embarcación','Equipo y terminología'],notes:'aula-per/nomenclatura-amarre-fondeo/index.html',notesTitle:'Apuntes completos: nomenclatura, amarre y fondeo',notesDescription:'Seis temas preparados a partir de las preguntas de los exámenes completos.',actionText:'Abrir apuntes del bloque'},
+    {title:'Amarre y fondeo',description:'Aprende a utilizar cabos, nudos, amarras y equipos de fondeo con seguridad.',lessons:['Cabos y operaciones','Nudos fundamentales','Elementos de amarre','Equipo y maniobra de fondeo'],notes:'aula-per/nomenclatura-amarre-fondeo/index.html',notesTitle:'Apuntes completos: nomenclatura, amarre y fondeo',notesDescription:'Cabos, nudos, amarras, equipo y maniobra de fondeo con enfoque de examen.',actionText:'Abrir apuntes del bloque'},
     {title:'Seguridad en la mar',description:'Estudia estabilidad, prevención, material de seguridad y actuación ante riesgos.',lessons:['Estabilidad básica','Prevención de accidentes','Material de seguridad','Abandono y supervivencia']},
     {title:'Legislación',description:'Revisa las normas esenciales, la documentación y la protección del medio marino.',lessons:['Documentación del barco','Responsabilidad del patrón','Limitaciones de navegación','Protección del medio marino']},
     {title:'Balizamiento IALA',description:'Interpreta marcas laterales, cardinales, de peligro aislado y especiales.',lessons:['Sistema lateral','Marcas cardinales','Peligro aislado y aguas navegables','Marcas especiales y peligros nuevos']},
@@ -21,7 +21,7 @@
   document.querySelector('[data-module-breadcrumb]').textContent = item.title;
   document.querySelector('[data-module-lessons]').innerHTML = item.lessons.map((lesson,index)=>`<a class="module" href="leccion-per.html?modulo=${number}&leccion=${index+1}"><span class="module-num">${String(index+1).padStart(2,'0')}</span><div><strong>${lesson}</strong><small>Entrar en la lección, materiales y actividades.</small></div><span class="module-time">Abrir →</span></a>`).join('');
   if (item.notes) {
-    document.querySelector('[data-module-lessons]').insertAdjacentHTML('beforeend', `<a class="module" href="${item.notes}"><span class="module-num">⇩</span><div><strong>Apuntes completos del Reglamento RIPA</strong><small>Reglas 1 a 30, explicaciones prácticas, puntos clave y presentación original.</small></div><span class="module-time">Estudiar →</span></a>`);
+    document.querySelector('[data-module-lessons]').insertAdjacentHTML('beforeend', `<a class="module" href="${item.notes}"><span class="module-num">⇩</span><div><strong>${item.notesTitle || 'Apuntes completos del Reglamento RIPA'}</strong><small>${item.notesDescription || 'Reglas 1 a 30, explicaciones prácticas, puntos clave y presentación original.'}</small></div><span class="module-time">Estudiar →</span></a>`);
   }
   const previous = document.querySelector('[data-module-prev]');
   const next = document.querySelector('[data-module-next]');
@@ -29,5 +29,5 @@
   next.href = number < 10 ? `modulo-per.html?modulo=${number+1}` : 'aula-per.html';
   const action = document.querySelector('[data-module-action]');
   action.href = item.notes || item.action || 'baterias-test.html';
-  if (item.notes) action.textContent = 'Abrir apuntes del RIPA';
+  if (item.notes) action.textContent = item.actionText || 'Abrir apuntes del RIPA';
 })();
